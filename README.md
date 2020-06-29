@@ -3,7 +3,7 @@
 [Required text](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html) in Go.
 
 ```zsh
-go test -bench = .
+go test -bench=.
 ```
 
 > The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made.
@@ -43,7 +43,7 @@ Or in Lisp:
                  max-count)))
 ```
 
-When we consider the _shapes_ of the two processes, we find that they evolve quite differently. Consider the first process. The substitution model reveals a shape of expansion followed by contraction. The expansion occurs as the process builds up a chain of deferred operations (in this case, a chain of multiplications).
+When we consider the _shapes_ of the two processes, we find that they evolve quite differently. Consider the first process. The substitution model reveals a shape of expansion followed by contraction. The expansion occurs as the process builds up a chain of deferred operations (in this case, a chain of multiplications). ... **Carrying out this process requires that the interpreter keep track of the operations to be performed later on.**
 
 By contrast, the second process does not grow and shrink. At each step, all we need to keep track of, for any n, are the current values of the variables product, counter, and max-count. We call this an iterative process. In general, an iterative process is one whose state can be summarized by a fixed number of state variables, together with a fixed rule that describes how the state variables should be updated as the process moves from state to state and an (optional) end test that specifies conditions under which the process should terminate.
 
