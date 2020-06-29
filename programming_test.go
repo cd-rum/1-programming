@@ -15,3 +15,15 @@ func BenchmarkFactTwo(b *testing.B) {
         factTwo(6)
     }
 }
+
+func BenchmarkFibOne(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        fibOne(7)
+    }
+}
+
+func BenchmarkFibTwo(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        fibTwo(7)
+    }
+}

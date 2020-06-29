@@ -6,6 +6,8 @@ Completing [this book](https://mitpress.mit.edu/sites/default/files/sicp/full-te
 go test -bench=.
 ```
 
+Lower is [better](https://golang.org/pkg/testing/).
+
 > The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made.
 > - _John Locke, An Essay Concerning Human Understanding (1690)_
 
@@ -48,3 +50,49 @@ When we consider the _shapes_ of the two processes, we find that they evolve qui
 By contrast, the second process does not grow and shrink. At each step, all we need to keep track of, for any `n`, are the current values of the variables `product`, `counter`, and `max-count`. We call this an iterative process. In general, an iterative process is one whose state can be summarized by a fixed number of state variables, together with a fixed rule that describes how the state variables should be updated as the process moves from state to state and an (optional) end test that specifies conditions under which the process should terminate.
 
 **In the iterative case, the program variables provide a complete description of the state of the process at any point.**
+
+### Tree recursion
+
+```lisp
+(define (fib n)
+  (cond ((= n 0) 0)
+        ((= n 1) 1)
+        (else (+ (fib (- n 1))
+                 (fib (- n 2))))))
+```
+
+**This procedure is instructive as a prototypical tree recursion, but it is a terrible way to compute Fibonacci numbers because it does so much redundant computation.**
+
+Given:
+
+```
+a = a + b
+b = a
+```
+
+It is not hard to show that, after applying this transformation `n` times, `a` and `b` will be equal.
+
+```lisp
+(define (fib n)
+  (fib-iter 1 0 n))
+
+(define (fib-iter a b count)
+  (if (= count 0)
+      b
+      (fib-iter (+ a b) a (- count 1))))
+```
+
+The Go equivalents perform now thus:
+
+```golang
+$ go test -bench=.
+goos: linux
+goarch: amd64
+pkg: github.com/cd-rum/programming
+BenchmarkFactOne-16     88593147                13.4 ns/op
+BenchmarkFactTwo-16     76278255                16.2 ns/op
+BenchmarkFibOne-16      16317018                73.5 ns/op
+BenchmarkFibTwo-16      68011566                18.0 ns/op
+PASS
+ok      github.com/cd-rum/programming   6.129s
+```
