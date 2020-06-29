@@ -1,6 +1,6 @@
 # Structure and interpretation of computer programs
 
-Completing [this book](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html) in Go.
+Completing [this book](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html) in Go. I remember zero math so go easy.
 
 ```zsh
 go test -bench=.
