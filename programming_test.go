@@ -27,3 +27,10 @@ func BenchmarkFibTwo(b *testing.B) {
         fibTwo(7)
     }
 }
+
+func BenchmarkCountChange(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        countChange(100)
+    }
+}
+

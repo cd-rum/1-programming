@@ -8,6 +8,8 @@ func main() {
 
   fmt.Println(fibOne(7))
   fmt.Println(fibTwo(7))
+
+  fmt.Println(countChange(100))
 }
 
 /*
@@ -53,3 +55,28 @@ func fibIter(a int, b int, count int) int {
   }
   return fibIter(a + b, a, count - 1)
 }
+
+func countChange(amount int) int {
+  return cc(amount, 5)
+}
+
+func cc(amount int, kindsOfCoins int) int {
+  if amount == 0 {
+    return 1
+  } else if amount < 0 || kindsOfCoins == 0 {
+    return 0
+  }
+  return cc(amount, kindsOfCoins - 1) + cc(amount - firstDenomination(kindsOfCoins), kindsOfCoins)
+}
+
+func firstDenomination(kindsOfCoins int) int {
+  switch kindsOfCoins {
+    case 1: return 1
+    case 2: return 5
+    case 3: return 10
+    case 4: return 25
+    case 5: return 50
+  }
+  return 1
+}
+

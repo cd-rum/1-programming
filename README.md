@@ -104,3 +104,28 @@ It takes only a bit of cleverness to come up with the iterative Fibonacci algori
 The number of ways to change amount `a` using `n` kinds of coins equals:
 * the number of ways to change amount `a` using all but the first kind of coin, plus
 * the number of ways to change amount `a - d` using all `n` kinds of coins, where `d` is the denomination of the first kind of coin.
+
+**To see why this is true, observe that the ways to make change can be divided into two groups: those that do not use any of the first kind of coin, and those that do. Therefore, the total number of ways to make change for some amount is equal to the number of ways to make change for the amount without using any of the first kind of coin, plus the number of ways to make change assuming that we do use the first kind of coin. But the latter number is equal to the number of ways to make change for the amount that remains after using a coin of the first kind.**
+
+...
+
+```lisp
+(define (count-change amount)
+  (cc amount 5))
+(define (cc amount kinds-of-coins)
+  (cond ((= amount 0) 1)
+        ((or (< amount 0) (= kinds-of-coins 0)) 0)
+        (else (+ (cc amount
+                     (- kinds-of-coins 1))
+                 (cc (- amount
+                        (first-denomination kinds-of-coins))
+                     kinds-of-coins)))))
+(define (first-denomination kinds-of-coins)
+  (cond ((= kinds-of-coins 1) 1)
+        ((= kinds-of-coins 2) 5)
+        ((= kinds-of-coins 3) 10)
+        ((= kinds-of-coins 4) 25)
+        ((= kinds-of-coins 5) 50)))
+```
+
+Intuitively, this felt off to me but it's about first denominations and not amounts.
