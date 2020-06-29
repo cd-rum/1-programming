@@ -1,5 +1,7 @@
 # Structure and interpretation of computer programs
 
+[![Go Report](https://goreportcard.com/badge/github.com/cd-rum/1-programming)](https://goreportcard.com/badge/github.com/cd-rum/1-programming)
+
 Completing [this book](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html) in Go. I remember zero math so go easy.
 
 ```zsh
