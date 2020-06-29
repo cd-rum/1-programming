@@ -15,8 +15,7 @@ func main() {
 
 /*
   Examples are written to maintain logical similarity to the lisp examples,
-  not to be idiomatic Go. That would likely ruin the point of the exercises,
-  too,
+  not to be idiomatic Go. That would likely ruin the point of the exercises.
 */
 
 func factOne(n int) int {
