@@ -145,3 +145,21 @@ ok      github.com/cd-rum/programming   9.319s
 ```
 
 It ain't fast. The authors (Abelson, Sussman, and Sussman) write that `countChange` generates a tree-recursive process with redundancies similar to those in our first implementation of `fib`. The observation that a tree-recursive process may be highly inefficient but often easy to specify and understand has led people to propose that one could get the best of both worlds by designing a _smart compiler_ that could transform tree-recursive procedures into more efficient procedures that compute the same result. Easy to understand but slow.
+
+Now write this (1.11) into a recursive function.
+
+```pseudocode
+f(n) = n if n < 3 and f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3) if n > 3
+```
+
+There's no Lisp here so we're on our own. Breaking down the formula above:
+
+```golang
+func treeRecursive(n int) int {
+  if n < 3 {
+    return n
+  }
+  // send to another iterative function like those earlier
+}
+```
+

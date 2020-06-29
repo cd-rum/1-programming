@@ -34,3 +34,9 @@ func BenchmarkCountChange(b *testing.B) {
     }
 }
 
+func BenchmarkTreeRecursive(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        treeRecursive(100)
+    }
+}
+

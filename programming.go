@@ -10,6 +10,7 @@ func main() {
   fmt.Println(fibTwo(7))
 
   fmt.Println(countChange(100))
+  fmt.Println(treeRecursive(100))
 }
 
 /*
@@ -80,3 +81,16 @@ func firstDenomination(kindsOfCoins int) int {
   return 1
 }
 
+func treeRecursive(n int) int {
+  if n < 3 {
+    return n
+  }
+  return treeIterative(2, 1, 0, n)
+}
+
+func treeIterative(a int, b int, c int, count int) int {
+  if count < 3 {
+    return a
+  }
+  return treeIterative(a + (2 * b) + (3 * c), a, b, count - 1)
+}
