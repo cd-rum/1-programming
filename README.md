@@ -144,4 +144,4 @@ PASS
 ok      github.com/cd-rum/programming   9.319s
 ```
 
-It ain't fast. The authors (Abelson, Sussman, and Sussman) write that `countChange` generates a tree-recursive process with redundancies similar to those in our first implementation of `fib`.
+It ain't fast. The authors (Abelson, Sussman, and Sussman) write that `countChange` generates a tree-recursive process with redundancies similar to those in our first implementation of `fib`. The observation that a tree-recursive process may be highly inefficient but often easy to specify and understand has led people to propose that one could get the best of both worlds by designing a _smart compiler_ that could transform tree-recursive procedures into more efficient procedures that compute the same result. Easy to understand but slow.
