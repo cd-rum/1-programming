@@ -128,7 +128,7 @@ The number of ways to change amount `a` using `n` kinds of coins equals:
         ((= kinds-of-coins 5) 50)))
 ```
 
-Intuitively, this felt off to me but it's about first denominations and not amounts. Yet `countChange` generates a tree-recursive process with redundancies similar to those in our first implementation of `fib`.
+Intuitively, this felt off to me but it's about first denominations and not amounts.
 
 ```zsh
 $ go test -bench=.
@@ -144,4 +144,4 @@ PASS
 ok      github.com/cd-rum/programming   9.319s
 ```
 
-It ain't fast.
+It ain't fast. The authors (Abelson, Sussman, and Sussman) write that `countChange` generates a tree-recursive process with redundancies similar to those in our first implementation of `fib`.
