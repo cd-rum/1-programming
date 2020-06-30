@@ -12,6 +12,8 @@ fn main() {
   println(sw.elapsed().nanoseconds())
   println(count_change(100))
   println(sw.elapsed().nanoseconds())
+  println(tree_recursive(100))
+  println(sw.elapsed().nanoseconds())
 }
 
 fn fact_one(n int) int {
@@ -75,4 +77,18 @@ fn first_denomination(kinds_of_coins int) int {
     5    { 50 }
     else { 50 }
   }
+}
+
+fn tree_recursive(n int) int {
+  if n < 3 {
+    return n
+  }
+  return tree_iterative(2, 1, 0, n)
+}
+
+fn tree_iterative(a int, b int, c int, count int) int {
+  if count < 3 {
+    return a
+  }
+  return tree_iterative(a + (2 * b) + (3 * c), a, b, count - 1)
 }
