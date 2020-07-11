@@ -40,3 +40,8 @@ func BenchmarkTreeRecursive(b *testing.B) {
     }
 }
 
+func BenchmarkTriangle(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        Triangle(10)
+    }
+}

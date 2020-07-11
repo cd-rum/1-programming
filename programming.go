@@ -11,11 +11,15 @@ func main() {
 
   fmt.Println(countChange(100))
   fmt.Println(treeRecursive(100))
+
+  for _, r := range Triangle(10) {
+    fmt.Println(r)
+  }
 }
 
 /*
-  Examples are written to maintain logical similarity to the lisp examples,
-  not to be idiomatic Go. That would likely ruin the point of the exercises.
+Examples are written to maintain logical similarity to the lisp examples,
+not to be idiomatic Go. That would likely ruin the point of the exercises.
 */
 
 func factOne(n int) int {
@@ -93,3 +97,27 @@ func treeIterative(a int, b int, c int, count int) int {
   }
   return treeIterative(a + (2 * b) + (3 * c), a, b, count - 1)
 }
+
+/* 
+Shamelessly lifted because the distinctions between interative and recursive 
+were unclear to me here.
+*/
+
+func Triangle(depth uint16) [][]uint64 { // Unsigned integers to avoid negative values
+  triangle := make([][]uint64, depth)
+
+  for d := 0; d < int(depth); d++ {      // Each row
+    row := make([]uint64, d + 1)         // Make a new row
+    for col := d / 2; col >= 0; col-- {  // Cols are half the depth because it's symmetrical
+      val := uint64(1)
+      if col > 0 {
+        prev := triangle[d-1]
+        val = prev[col-1] + prev[col]
+      }
+      row[col], row[d-col] = val, val
+    }
+    triangle[d] = row
+  }
+  return triangle
+}
+
