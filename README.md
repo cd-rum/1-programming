@@ -175,3 +175,4 @@ func treeRecursive(n int) int {
 }
 ```
 
+I stole 1.12 from [here](https://codereview.stackexchange.com/questions/115689/golang-implementation-of-pascals-triangle). Because the triangle is symmetrical we can divide the depth.
