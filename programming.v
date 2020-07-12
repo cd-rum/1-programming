@@ -92,3 +92,21 @@ fn tree_iterative(a int, b int, c int, count int) int {
   }
   return tree_iterative(a + (2 * b) + (3 * c), a, b, count - 1)
 }
+
+fn triangle(depth u16) [][]u64 {
+  mut tri := []u64{ cap: int(depth), init: 1 }
+
+  for d, _ in tri {
+    mut row := []u64{ cap: int(d + 1) }
+    for col, _ in d / 2 {
+      val := u64(1)
+      if col > 0 {
+        prev := tri[d-1]
+        val = prev[col-1] + prev[col]
+      }
+      row[col], row[d-col] = val, val
+    }
+    tri[d] = row
+  }
+  return tri
+}
